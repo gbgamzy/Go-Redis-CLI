@@ -15,6 +15,16 @@ This project provides a lightweight Redis CLI implementation in GoLang, capable 
 - Designed for simplicity and extensibility.
 - Works seamlessly with `redis-cli`.
 
+<img width="445" alt="Screenshot 2024-12-07 at 4 58 42 PM" src="https://github.com/user-attachments/assets/1c28940a-0ca1-4ebd-a9a8-74a87937fae9">
+
+<img width="437" alt="Screenshot 2024-12-07 at 4 53 27 PM" src="https://github.com/user-attachments/assets/fcb30018-2078-4ed9-b3b3-fa61bdc5a167">
+
+<img width="445" alt="Screenshot 2024-12-07 at 4 58 42 PM" src="https://github.com/user-attachments/assets/3594dc6f-be43-47ef-9dac-a3c3891dc53b">
+
+<img width="561" alt="Screenshot 2024-12-07 at 5 07 00 PM" src="https://github.com/user-attachments/assets/a6ae5132-139e-45c2-8987-9a2dadb96805">
+
+
+
 ## Installation
 
 Clone the repository:
