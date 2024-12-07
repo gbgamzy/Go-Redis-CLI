@@ -1,7 +1,6 @@
 package main
 
 import (
-	"strings"
 	"sync"
 )
 
@@ -100,7 +99,7 @@ func hget(args []Value) Value {
 
 func hgetall(args []Value) Value {
 	if len(args) != 1 {
-		return Value{typ: "error", str: "ERR wrong number o f arguments for 'hgetall' command"}
+		return Value{typ: "error", str: "ERR wrong number of arguments for 'hgetall' command"}
 	}
 	hash := args[0].bulk
 	HSETsMu.RLock()
@@ -110,15 +109,19 @@ func hgetall(args []Value) Value {
 	if !ok {
 		return Value{typ: "null"}
 	}
-	var builder strings.Builder
+
+	// Create an array response instead of concatenated string
+	result := make([]Value, 0, len(value)*2) // Pre-allocate space for all keys and values
+
 	for k, v := range value {
-		builder.WriteString(k)
-		builder.WriteString(":")
-		builder.WriteString(v)
-		builder.WriteString("\n")
+		// Add key and value as separate elements
+		result = append(result, Value{typ: "bulk", bulk: k})
+		result = append(result, Value{typ: "bulk", bulk: v})
 	}
-	return Value{typ: "bulk", bulk: builder.String()}
+
+	return Value{typ: "array", array: result}
 }
+
 func hdel(args []Value) Value {
 	if len(args) != 2 {
 		return Value{typ: "error", str: "ERR wrong number o f arguments for 'hdel' command"}
